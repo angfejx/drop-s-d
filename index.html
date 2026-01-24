@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<!-- IMPORTANTE PARA MÓVIL Y SAFARI -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO PRINCIPAL -->
+<title>Drop S&D | Gorras Barbas Streetwear Premium</title>
+
+<meta name="description" content="Compra gorras Barbas premium en Drop S&D. Streetwear original, diseño exclusivo y pedidos directos por WhatsApp. Envíos en México.">
+<meta name="keywords" content="gorras barbas, drop a&d, gorras streetwear, gorras premium, gorras mexico">
+<meta name="author" content="Drop S&D">
+<meta name="robots" content="index, follow">
+
+<!-- SEO PARA REDES SOCIALES (CUANDO COMPARTAN TU LINK) -->
+<meta property="og:title" content="Drop S&D | Gorras Barbas Premium">
+<meta property="og:description" content="Gorras Barbas streetwear premium. Compra directa por WhatsApp.">
+<meta property="og:image" content="gorra1.jpg">
+<meta property="og:type" content="website">
+
+<!-- FUENTE -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{background:#000;color:#fff}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:25px;
+  font-size:2.6rem;
+  font-weight:900;
+  letter-spacing:4px;
+}
+header span{color:#ff005c}
+
+/* CARRITO */
+.cart-icon{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#ff005c;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1.5rem;
+  z-index:1000;
+}
+
+.cart-count{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  background:#000;
+  border:2px solid #fff;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  font-size:.8rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:700;
+}
+
+/* PRODUCTOS */
+.grid{
+  padding:25px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:30px;
+}
+
+.card{
+  background:#111;
+  border-radius:25px;
+  overflow:hidden;
+  animation:up 1s;
+}
+
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+.info{padding:20px}
+.price{color:#00ffd5;margin:10px 0}
+
+.btn{
+  display:block;
+  padding:14px;
+  text-align:center;
+  border-radius:40px;
+  background:#ff005c;
+  color:#fff;
+  font-weight:700;
+}
+
+.btn:active{transform:scale(.95)}
+
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:.7;
+}
+
+@keyframes up{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<a href="carrito.html" class="cart-icon" aria-label="Ver carrito">
+  🛒
+  <div class="cart-count" id="contador">0</div>
+</a>
+
+<header>
+  DROP <span>S&D</span>
+</header>
+
+<section class="grid">
+
+  <div class="card">
+    <img src="gorra1.jpg" alt="Gorra Barbas Negra Premium">
+    <div class="info">
+      <h2>Gorra Barbas Negra</h2>
+      <p class="price">$600 MXN</p>
+      <a class="btn" href="producto1.html">Ver gorra</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="gorra2.jpg" alt="Gorra Barbas Skull Streetwear">
+    <div class="info">
+      <h2>Gorra Barbas Skull</h2>
+      <p class="price">$600 MXN</p>
+      <a class="btn" href="producto2.html">Ver gorra</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="gorra3.jpg" alt="Gorra Barbas Azul Urbana">
+    <div class="info">
+      <h2>Gorra Barbas Azul</h2>
+      <p class="price">$600 MXN</p>
+      <a class="btn" href="producto3.html">Ver gorra</a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+📲 Pedidos por WhatsApp: 5575359774<br>
+📸 Instagram: @drop.sayuydan
+</footer>
+
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+document.getElementById("contador").textContent = carrito.length;
+</script>
+
+</body>
+</html>
