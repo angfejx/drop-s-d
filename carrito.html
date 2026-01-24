@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrito | Drop A&D</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{background:#000;color:#fff}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:25px;
+  font-size:2rem;
+  font-weight:700;
+}
+
+/* GRID */
+.grid{
+  padding:25px;
+  display:grid;
+  gap:25px;
+}
+
+/* CARD */
+.card{
+  background:#111;
+  border-radius:25px;
+  overflow:hidden;
+  animation:fade .8s;
+}
+
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.info{
+  padding:20px;
+}
+
+.price{
+  color:#00ffd5;
+  margin:8px 0;
+}
+
+/* BOTONES */
+.btn{
+  display:block;
+  margin:12px 20px;
+  padding:14px;
+  text-align:center;
+  border-radius:40px;
+  font-weight:700;
+  background:#ff005c;
+  color:#fff;
+}
+
+.btn.gray{
+  background:#222;
+}
+
+.btn.delete{
+  background:#ff3333;
+}
+
+.btn:active{
+  transform:scale(.95);
+}
+
+/* ANIMACIÓN */
+@keyframes fade{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+
+<header>🛒 TU CARRITO</header>
+
+<section class="grid" id="lista"></section>
+
+<a class="btn" href="https://wa.me/525575359774">Comprar por WhatsApp</a>
+<a class="btn gray" href="index.html">⬅ Volver a la tienda</a>
+
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let lista = document.getElementById("lista");
+
+function mostrarCarrito(){
+  lista.innerHTML = "";
+
+  if(carrito.length === 0){
+    lista.innerHTML = "<p style='text-align:center;opacity:.6'>Tu carrito está vacío</p>";
+    return;
+  }
+
+  carrito.forEach((p, index)=>{
+    lista.innerHTML += `
+      <div class="card">
+        <img src="${p.img}">
+        <div class="info">
+          <h3>${p.nombre}</h3>
+          <p class="price">$${p.precio} MXN</p>
+        </div>
+
+        <button class="btn delete" onclick="eliminar(${index})">
+          ❌ Eliminar
+        </button>
+      </div>
+    `;
+  });
+}
+
+function eliminar(index){
+  carrito.splice(index, 1);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  mostrarCarrito();
+}
+
+mostrarCarrito();
+</script>
+
+</body>
+</html>
