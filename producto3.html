@@ -28,19 +28,19 @@ border-radius:40px;font-weight:700;background:#ff005c;color:#fff}
   <p class="price">$600 MXN</p>
 
   <button class="btn gray"
-  onclick="agregar('Barbas Azul',600,'gorra3.jpg')>
+  onclick="agregar('Barbas Azul',600,'gorra3.jpg')">
   Agregar al carrito
   </button>
 
-  <a class="btn href="https://wa.me/525575359774">Comprar</a>
+  <a class="btn" href="https://wa.me/525575359774">Comprar</a>
   <a class="btn gray" href="index.html">⬅ Volver</a>
 </div>
 
 <script>
 function agregar(nombre,precio,img){
-  let carrito=JSON.parse(localStorage.getItem("carrito"))||[];
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   carrito.push({nombre,precio,img});
-  localStorage.setItem("carrito",JSON.stringify(carrito));
+  localStorage.setItem("carrito", JSON.stringify(carrito));
   alert("🛒 Agregado al carrito");
 }
 </script>
