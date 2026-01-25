@@ -4,34 +4,123 @@
 <meta charset="UTF-8">
 <title>Producto | Drop S&D</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <style>
-body{background:#000;color:#fff;font-family:Montserrat;padding:40px}
-img{width:300px;border-radius:20px}
-button{margin-top:20px;padding:15px 30px;border-radius:40px;border:none;font-weight:700}
-.add{background:#ff005c;color:#fff}
-.cart{background:#25D366;color:#fff}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{
+  background:#000;
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.product{
+  background:#111;
+  padding:40px;
+  border-radius:30px;
+  max-width:900px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.product img{
+  width:100%;
+  border-radius:25px;
+  object-fit:cover;
+}
+
+.info h1{
+  font-size:2.2rem;
+  font-weight:900;
+}
+
+.price{
+  margin:20px 0;
+  font-size:1.5rem;
+  color:#00ffd5;
+}
+
+.desc{
+  opacity:.85;
+  margin-bottom:30px;
+}
+
+button{
+  width:100%;
+  padding:16px;
+  border-radius:40px;
+  border:none;
+  font-weight:700;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.add{
+  background:#ff005c;
+  color:#fff;
+  margin-bottom:15px;
+}
+.add:hover{opacity:.85}
+
+.cart{
+  background:#25D366;
+  color:#fff;
+}
+.cart:hover{opacity:.85}
+
+.back{
+  display:block;
+  margin-top:25px;
+  text-align:center;
+  color:#aaa;
+  text-decoration:none;
+}
 </style>
 </head>
+
 <body>
 
-<h1 id="Gorra Barbas Skate or Die"></h1>
-<img id="gorra1.jpg">
-<p id="600"></p>
+<div class="product">
+  <!-- Imagen -->
+  <img id="gorra1.jpg" src="" alt="Gorra Barbas Skate or Die">
 
-<button class="add" onclick="agregar()">Agregar al carrito</button>
-<button class="cart" onclick="window.location='carrito.html'">Ver carrito</button>
+  <!-- Info -->
+  <div class="info">
+    <h1 id="nombre"></h1>
+    <p class="price" id="precio"></p>
+    <p class="desc">Gorra premium streetwear. Calidad alta, diseño exclusivo Drop S&D.</p>
+
+    <button class="add" onclick="agregar()">Agregar al carrito</button>
+    <button class="cart" onclick="window.location='carrito.html'">Ver carrito</button>
+
+    <a href="index.html" class="back">← Volver a la tienda</a>
+  </div>
+</div>
 
 <script>
 const p = JSON.parse(localStorage.getItem("producto"));
-document.getElementById("nombre").innerText=p.nombre;
-document.getElementById("precio").innerText=p.precio;
-document.getElementById("img").src=p.img;
+
+if(!p){
+  alert("No hay producto seleccionado");
+  window.location = "index.html";
+}
+
+document.getElementById("nombre").innerText = p.nombre;
+document.getElementById("precio").innerText = p.precio + " MXN";
+document.getElementById("img").src = p.img;
 
 function agregar(){
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   carrito.push(p);
   localStorage.setItem("carrito", JSON.stringify(carrito));
-  alert("Producto agregado 🛒");
+  alert("Producto agregado al carrito 🛒");
 }
 </script>
 
