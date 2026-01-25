@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
 body{background:#000;color:#fff}
 
-/* ---------- BOTÓN CARRITO ---------- */
+/* BOTÓN CARRITO */
 .cart-btn{
   position:fixed;
   top:20px;
@@ -44,7 +44,7 @@ body{background:#000;color:#fff}
   font-weight:700;
 }
 
-/* ---------- HERO ---------- */
+/* HERO */
 .hero{
   height:100vh;
   display:flex;
@@ -53,16 +53,10 @@ body{background:#000;color:#fff}
   align-items:center;
   text-align:center;
 }
-.hero h1{
-  font-size:3.6rem;
-  font-weight:900;
-}
+.hero h1{font-size:3.6rem;font-weight:900}
 .hero span{color:#ff005c}
-.hero p{
-  opacity:.75;
-  margin:20px 0;
-  max-width:520px;
-}
+.hero p{opacity:.75;margin:20px 0;max-width:520px}
+
 .music-btn{
   margin-top:25px;
   padding:15px 42px;
@@ -77,6 +71,7 @@ body{background:#000;color:#fff}
   transform:scale(1.08);
   box-shadow:0 0 18px rgba(29,185,84,.6);
 }
+
 .arrow{
   margin-top:45px;
   font-size:2.6rem;
@@ -88,7 +83,7 @@ body{background:#000;color:#fff}
   50%{transform:translateY(12px)}
 }
 
-/* ---------- PRODUCTOS ---------- */
+/* PRODUCTOS */
 .grid{
   padding:60px;
   display:grid;
@@ -110,14 +105,8 @@ body{background:#000;color:#fff}
   height:300px;
   object-fit:cover;
 }
-.info{
-  padding:22px;
-  text-align:center;
-}
-.price{
-  color:#00ffd5;
-  margin:10px 0;
-}
+.info{padding:22px;text-align:center}
+.price{color:#00ffd5;margin:10px 0}
 .add-btn{
   padding:12px 28px;
   border-radius:30px;
@@ -128,7 +117,7 @@ body{background:#000;color:#fff}
   cursor:pointer;
 }
 
-/* ---------- CARRITO ---------- */
+/* CARRITO */
 .cart{
   position:fixed;
   top:0;
@@ -143,10 +132,7 @@ body{background:#000;color:#fff}
 }
 .cart.active{right:0}
 .cart h2{text-align:center;margin-bottom:20px}
-.item{
-  margin:12px 0;
-  font-size:.95rem;
-}
+.item{margin:12px 0;font-size:.95rem}
 .cart button{
   width:100%;
   margin-top:20px;
@@ -158,11 +144,7 @@ body{background:#000;color:#fff}
   font-weight:700;
   cursor:pointer;
 }
-.close{
-  text-align:right;
-  cursor:pointer;
-  font-size:1.2rem;
-}
+.close{text-align:right;cursor:pointer;font-size:1.2rem}
 </style>
 </head>
 
@@ -178,9 +160,10 @@ body{background:#000;color:#fff}
   <h1>Bienvenidos a <span>Drop S&D</span></h1>
   <p>Streetwear premium • Gorras exclusivas</p>
 
+  <!-- BOTÓN SPOTIFY (PLAYLIST DROP S&D) -->
   <a class="music-btn"
-     href="https://open.spotify.com/track/3uHf9l9xV6eE1JZxD6FZyT"
-     target="_blank">
+     href="https://open.spotify.com/search/Drop%20S%26D%20Streetwear%20Vibes"
+     target="_blank" rel="noopener">
      🎧 Mientras compras escucha música
   </a>
 
@@ -192,59 +175,18 @@ body{background:#000;color:#fff}
 <!-- PRODUCTOS -->
 <section id="productos" class="grid">
 
-  <div class="card">
-    <img src="gorra1.jpg">
-    <div class="info">
-      <h3>Gorra Barbas Skate or Die</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Barbas Skate or Die','$600')">Agregar</button>
-    </div>
-  </div>
+  <div class="card"><img src="gorra1.jpg"><div class="info"><h3>Gorra Barbas Skate or Die</h3><p class="price">$600 MXN</p><button class="add-btn" onclick="add('Gorra Barbas Skate or Die','$600')">Agregar</button></div></div>
 
-  <div class="card">
-    <img src="gorra2.jpg">
-    <div class="info">
-      <h3>Gorra Barbas Skull</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Barbas Skull','$600')">Agregar</button>
-    </div>
-  </div>
+  <div class="card"><img src="gorra2.jpg"><div class="info"><h3>Gorra Barbas Skull</h3><p class="price">$600 MXN</p><button class="add-btn" onclick="add('Gorra Barbas Skull','$600')">Agregar</button></div></div>
 
-  <div class="card">
-    <img src="gorra3.jpg">
-    <div class="info">
-      <h3>Gorra B-Star</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra B-Star','$600')">Agregar</button>
-    </div>
-  </div>
+  <div class="card"><img src="gorra3.jpg"><div class="info"><h3>Gorra B-Star</h3><p class="price">$600 MXN</p><button class="add-btn" onclick="add('Gorra B-Star','$600')">Agregar</button></div></div>
 
-  <div class="card">
-    <img src="gorra4.jpg">
-    <div class="info">
-      <h3>Gorra Scream</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Scream','$600')">Agregar</button>
-    </div>
-  </div>
+  <div class="card"><img src="gorra4.jpg"><div class="info"><h3>Gorra Scream</h3><p class="price">$600 MXN</p><button class="add-btn" onclick="add('Gorra Scream','$600')">Agregar</button></div></div>
 
-   <div class="card">
-    <img src="gorra5.jpg">
-    <div class="info">
-      <h3>Gorra Chrome CT Plata</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Chrome CT Plata','$600')">Agregar</button>
-    </div>
-  </div>
+  <div class="card"><img src="gorra5.jpg"><div class="info"><h3>Gorra Chrome CT Plata</h3><p class="price">$600 MXN</p><button class="add-btn" onclick="add('Gorra Chrome CT Plata','$600')">Agregar</button></div></div>
 
- <div class="card">
-    <img src="gorra6.jpg">
-    <div class="info">
-      <h3>Gorra Barbas Hats X CT Racing Cap</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Barbas Hats X CT Racing Cap','$600')">Agregar</button>
-    </div>
-  </div>  
+  <div class="card"><img src="gorra6.jpg"><div class="info"><h3>Gorra Barbas Hats X CT Racing Cap</h3><p class="price">$600 MXN</p><button class="add-btn" onclick="add('Gorra Barbas Hats X CT Racing Cap','$600')">Agregar</button></div></div>
+
 </section>
 
 <!-- CARRITO -->
@@ -267,11 +209,8 @@ function add(nombre, precio){
 
 function update(){
   document.getElementById("count").innerText=carrito.length;
-  let html="";
-  carrito.forEach(p=>{
-    html+=`<div class="item">🧢 ${p.nombre} - ${p.precio}</div>`;
-  });
-  document.getElementById("items").innerHTML=html;
+  document.getElementById("items").innerHTML =
+    carrito.map(p=>`<div class="item">🧢 ${p.nombre} - ${p.precio}</div>`).join("");
 }
 
 function toggleCart(){
