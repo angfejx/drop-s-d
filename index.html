@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Drop S&D | Streetwear</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -19,109 +20,138 @@ body{background:#000;color:#fff}
   align-items:center;
   text-align:center;
 }
-.hero h1{font-size:3.5rem;font-weight:900}
+.hero h1{
+  font-size:3.6rem;
+  font-weight:900;
+  letter-spacing:4px;
+}
 .hero span{color:#ff005c}
-.hero p{opacity:.8;margin:15px 0}
+.hero p{
+  opacity:.75;
+  margin:18px 0;
+  font-size:1.05rem;
+  max-width:500px;
+}
+
+/* BOTÓN SPOTIFY */
 .music-btn{
   margin-top:25px;
-  padding:15px 35px;
+  padding:15px 42px;
   border-radius:40px;
   background:#1DB954;
   color:#fff;
-  text-decoration:none;
   font-weight:700;
+  font-size:1rem;
+  text-decoration:none;
+  transition:.3s;
+  display:inline-block;
 }
+.music-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 18px rgba(29,185,84,.6);
+}
+
+/* FLECHA */
 .arrow{
-  margin-top:40px;
-  font-size:2.5rem;
+  margin-top:45px;
+  font-size:2.6rem;
   cursor:pointer;
   animation:bounce 1.5s infinite;
 }
-
 @keyframes bounce{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(10px)}
+  50%{transform:translateY(12px)}
 }
 
 /* GRID */
 .grid{
-  padding:50px;
+  padding:60px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:35px;
+  gap:40px;
 }
 .card{
   background:#111;
   border-radius:25px;
   overflow:hidden;
   transition:.4s;
-}
-.card:hover{transform:translateY(-10px)}
-.card img{width:100%;height:300px;object-fit:cover}
-.info{padding:20px}
-.price{color:#00ffd5;margin:10px 0}
-.btn{
-  width:100%;
-  padding:14px;
-  border-radius:40px;
-  background:#ff005c;
-  border:none;
-  color:#fff;
-  font-weight:700;
   cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+}
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+.info{padding:22px}
+.price{
+  color:#00ffd5;
+  margin-top:10px;
+  font-weight:600;
 }
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Bienvenidos a <span>Drop S&D</span></h1>
-  <p>Streetwear premium • Gorras exclusivas</p>
+  <p>
+    Streetwear premium inspirado en la cultura urbana.  
+    Gorras exclusivas, estilo real.
+  </p>
 
-  <!-- Spotify -->
-  <iframe style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/3uHf9l9xV6eE1JZxD6FZyT"
-    width="300" height="80" frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-  </iframe>
+  <!-- BOTÓN SPOTIFY -->
+  <a class="music-btn"
+     href="https://open.spotify.com/track/3uHf9l9xV6eE1JZxD6FZyT"
+     target="_blank">
+     🎧 Mientras compras escucha música
+  </a>
 
-  <div class="arrow" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">⬇️</div>
+  <div class="arrow"
+       onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">
+    ⬇️
+  </div>
 </section>
 
+<!-- PRODUCTOS -->
 <section id="productos" class="grid">
 
-<div class="card" onclick="verProducto('Gorra Barbas Skate or Die','$600','gorra1.jpg')">
-<img src="gorra1.jpg">
-<div class="info">
-<h3>Gorra Barbas Skate or Die</h3>
-<p class="price">$600 MXN</p>
-</div>
-</div>
+  <div class="card" onclick="verProducto('Gorra Barbas Skate or Die','$600','gorra1.jpg')">
+    <img src="gorra1.jpg" alt="Gorra Barbas Skate or Die">
+    <div class="info">
+      <h3>Gorra Barbas Skate or Die</h3>
+      <p class="price">$600 MXN</p>
+    </div>
+  </div>
 
-<div class="card" onclick="verProducto('Gorra Barbas Skull','$600','gorra2.jpg')">
-<img src="gorra2.jpg">
-<div class="info">
-<h3>Gorra Barbas Skull</h3>
-<p class="price">$600 MXN</p>
-</div>
-</div>
+  <div class="card" onclick="verProducto('Gorra Barbas Skull','$600','gorra2.jpg')">
+    <img src="gorra2.jpg" alt="Gorra Barbas Skull">
+    <div class="info">
+      <h3>Gorra Barbas Skull</h3>
+      <p class="price">$600 MXN</p>
+    </div>
+  </div>
 
-<div class="card" onclick="verProducto('Gorra B-Star','$600','gorra3.jpg')">
-<img src="gorra3.jpg">
-<div class="info">
-<h3>Gorra B-Star</h3>
-<p class="price">$600 MXN</p>
-</div>
-</div>
+  <div class="card" onclick="verProducto('Gorra B-Star','$600','gorra3.jpg')">
+    <img src="gorra3.jpg" alt="Gorra B-Star">
+    <div class="info">
+      <h3>Gorra B-Star</h3>
+      <p class="price">$600 MXN</p>
+    </div>
+  </div>
 
   <div class="card" onclick="verProducto('Gorra Scream','$600','gorra4.jpg')">
-<img src="gorra4.jpg">
-<div class="info">
-<h3>Gorra Scream</h3>
-<p class="price">$600 MXN</p>
-</div>
-</div>
+    <img src="gorra4.jpg" alt="Gorra Scream">
+    <div class="info">
+      <h3>Gorra Scream</h3>
+      <p class="price">$600 MXN</p>
+    </div>
+  </div>
 
 </section>
 
