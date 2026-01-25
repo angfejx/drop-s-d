@@ -11,7 +11,40 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
 body{background:#000;color:#fff}
 
-/* HERO */
+/* ---------- BOTÓN CARRITO ---------- */
+.cart-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#ff005c;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.6rem;
+  cursor:pointer;
+  z-index:1000;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+.cart-btn span{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  background:#25D366;
+  color:#000;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  font-size:.8rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+/* ---------- HERO ---------- */
 .hero{
   height:100vh;
   display:flex;
@@ -23,17 +56,13 @@ body{background:#000;color:#fff}
 .hero h1{
   font-size:3.6rem;
   font-weight:900;
-  letter-spacing:4px;
 }
 .hero span{color:#ff005c}
 .hero p{
   opacity:.75;
-  margin:18px 0;
-  font-size:1.05rem;
-  max-width:500px;
+  margin:20px 0;
+  max-width:520px;
 }
-
-/* BOTÓN SPOTIFY */
 .music-btn{
   margin-top:25px;
   padding:15px 42px;
@@ -41,29 +70,25 @@ body{background:#000;color:#fff}
   background:#1DB954;
   color:#fff;
   font-weight:700;
-  font-size:1rem;
   text-decoration:none;
   transition:.3s;
-  display:inline-block;
 }
 .music-btn:hover{
   transform:scale(1.08);
   box-shadow:0 0 18px rgba(29,185,84,.6);
 }
-
-/* FLECHA */
 .arrow{
   margin-top:45px;
   font-size:2.6rem;
-  cursor:pointer;
   animation:bounce 1.5s infinite;
+  cursor:pointer;
 }
 @keyframes bounce{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(12px)}
 }
 
-/* GRID */
+/* ---------- PRODUCTOS ---------- */
 .grid{
   padding:60px;
   display:grid;
@@ -75,7 +100,6 @@ body{background:#000;color:#fff}
   border-radius:25px;
   overflow:hidden;
   transition:.4s;
-  cursor:pointer;
 }
 .card:hover{
   transform:translateY(-12px);
@@ -86,34 +110,81 @@ body{background:#000;color:#fff}
   height:300px;
   object-fit:cover;
 }
-.info{padding:22px}
+.info{
+  padding:22px;
+  text-align:center;
+}
 .price{
   color:#00ffd5;
-  margin-top:10px;
-  font-weight:600;
+  margin:10px 0;
+}
+.add-btn{
+  padding:12px 28px;
+  border-radius:30px;
+  border:none;
+  background:#ff005c;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ---------- CARRITO ---------- */
+.cart{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:100%;
+  max-width:420px;
+  height:100vh;
+  background:#111;
+  padding:30px;
+  transition:.4s;
+  z-index:2000;
+}
+.cart.active{right:0}
+.cart h2{text-align:center;margin-bottom:20px}
+.item{
+  margin:12px 0;
+  font-size:.95rem;
+}
+.cart button{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  border-radius:40px;
+  border:none;
+  background:#25D366;
+  color:#000;
+  font-weight:700;
+  cursor:pointer;
+}
+.close{
+  text-align:right;
+  cursor:pointer;
+  font-size:1.2rem;
 }
 </style>
 </head>
 
 <body>
 
+<!-- BOTÓN CARRITO -->
+<div class="cart-btn" onclick="toggleCart()">
+  🛒 <span id="count">0</span>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <h1>Bienvenidos a <span>Drop S&D</span></h1>
-  <p>
-    Streetwear premium inspirado en la cultura urbana.  
-    Gorras exclusivas, estilo real.
-  </p>
+  <p>Streetwear premium • Gorras exclusivas</p>
 
-  <!-- BOTÓN SPOTIFY -->
   <a class="music-btn"
      href="https://open.spotify.com/track/3uHf9l9xV6eE1JZxD6FZyT"
      target="_blank">
      🎧 Mientras compras escucha música
   </a>
 
-  <div class="arrow"
-       onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">
+  <div class="arrow" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">
     ⬇️
   </div>
 </section>
@@ -121,44 +192,79 @@ body{background:#000;color:#fff}
 <!-- PRODUCTOS -->
 <section id="productos" class="grid">
 
-  <div class="card" onclick="verProducto('Gorra Barbas Skate or Die','$600','gorra1.jpg')">
-    <img src="gorra1.jpg" alt="Gorra Barbas Skate or Die">
+  <div class="card">
+    <img src="gorra1.jpg">
     <div class="info">
       <h3>Gorra Barbas Skate or Die</h3>
       <p class="price">$600 MXN</p>
+      <button class="add-btn" onclick="add('Gorra Barbas Skate or Die','$600')">Agregar</button>
     </div>
   </div>
 
-  <div class="card" onclick="verProducto('Gorra Barbas Skull','$600','gorra2.jpg')">
-    <img src="gorra2.jpg" alt="Gorra Barbas Skull">
+  <div class="card">
+    <img src="gorra2.jpg">
     <div class="info">
       <h3>Gorra Barbas Skull</h3>
       <p class="price">$600 MXN</p>
+      <button class="add-btn" onclick="add('Gorra Barbas Skull','$600')">Agregar</button>
     </div>
   </div>
 
-  <div class="card" onclick="verProducto('Gorra B-Star','$600','gorra3.jpg')">
-    <img src="gorra3.jpg" alt="Gorra B-Star">
+  <div class="card">
+    <img src="gorra3.jpg">
     <div class="info">
       <h3>Gorra B-Star</h3>
       <p class="price">$600 MXN</p>
+      <button class="add-btn" onclick="add('Gorra B-Star','$600')">Agregar</button>
     </div>
   </div>
 
-  <div class="card" onclick="verProducto('Gorra Scream','$600','gorra4.jpg')">
-    <img src="gorra4.jpg" alt="Gorra Scream">
+  <div class="card">
+    <img src="gorra4.jpg">
     <div class="info">
       <h3>Gorra Scream</h3>
       <p class="price">$600 MXN</p>
+      <button class="add-btn" onclick="add('Gorra Scream','$600')">Agregar</button>
     </div>
   </div>
 
 </section>
 
+<!-- CARRITO -->
+<div class="cart" id="cart">
+  <div class="close" onclick="toggleCart()">✖</div>
+  <h2>Tu carrito</h2>
+  <div id="items"></div>
+  <button onclick="enviar()">Enviar pedido por WhatsApp</button>
+</div>
+
 <script>
-function verProducto(nombre, precio, img){
-  localStorage.setItem("producto", JSON.stringify({nombre, precio, img}));
-  window.location.href="producto.html";
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+update();
+
+function add(nombre, precio){
+  carrito.push({nombre,precio});
+  localStorage.setItem("carrito",JSON.stringify(carrito));
+  update();
+}
+
+function update(){
+  document.getElementById("count").innerText=carrito.length;
+  let html="";
+  carrito.forEach(p=>{
+    html+=`<div class="item">🧢 ${p.nombre} - ${p.precio}</div>`;
+  });
+  document.getElementById("items").innerHTML=html;
+}
+
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("active");
+}
+
+function enviar(){
+  let msg="Hola 👋 quiero comprar:\n\n";
+  carrito.forEach(p=>msg+=`🧢 ${p.nombre} - ${p.precio}\n`);
+  window.open("https://wa.me/525575359774?text="+encodeURIComponent(msg),"_blank");
 }
 </script>
 
