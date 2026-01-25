@@ -2,259 +2,133 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<title>Drop S&D | Streetwear</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Drop S&D | Streetwear Premium</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Montserrat',sans-serif
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{background:#000;color:#fff}
 
-body{
-  background:#000;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* INTRO */
-.intro{
+/* HERO */
+.hero{
   height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  animation:fadeOut 1s ease 4s forwards;
 }
-
-.intro h1{
-  font-size:3.2rem;
-  font-weight:900;
-  letter-spacing:6px;
-  animation:zoomIn 1.2s ease;
-}
-
-.intro span{color:#ff005c}
-
-.intro p{
-  margin-top:10px;
-  opacity:.7;
-  animation:fadeUp 1.5s ease;
-}
-
-.intro a{
-  margin-top:30px;
-  padding:14px 38px;
+.hero h1{font-size:3.5rem;font-weight:900}
+.hero span{color:#ff005c}
+.hero p{opacity:.8;margin:15px 0}
+.music-btn{
+  margin-top:25px;
+  padding:15px 35px;
   border-radius:40px;
   background:#1DB954;
   color:#fff;
   text-decoration:none;
   font-weight:700;
-  animation:fadeUp 1.8s ease;
-  transition:.3s;
 }
-.intro a:hover{transform:scale(1.07)}
+.arrow{
+  margin-top:40px;
+  font-size:2.5rem;
+  cursor:pointer;
+  animation:bounce 1.5s infinite;
+}
 
-/* HEADER */
-header{
-  text-align:center;
-  padding:25px;
-  font-size:2.6rem;
-  font-weight:900;
-  letter-spacing:4px;
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(10px)}
 }
 
 /* GRID */
 .grid{
-  padding:35px;
+  padding:50px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:35px;
 }
-
-/* CARD */
 .card{
   background:#111;
   border-radius:25px;
   overflow:hidden;
-  opacity:0;
-  transform:translateY(40px);
-  animation:cardIn 1s forwards;
-}
-
-.card:nth-child(2){animation-delay:.2s}
-.card:nth-child(3){animation-delay:.4s}
-.card:nth-child(4){animation-delay:.6s}
-
-.card img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
   transition:.4s;
 }
-
-.card:hover img{transform:scale(1.1)}
-
-.info{
-  padding:22px;
-}
-
-.info h2{
-  font-size:1.2rem;
-  font-weight:700;
-}
-
-.price{
-  color:#00ffd5;
-  margin:12px 0;
-  font-size:1.1rem;
-}
-
-/* BOTÓN */
+.card:hover{transform:translateY(-10px)}
+.card img{width:100%;height:300px;object-fit:cover}
+.info{padding:20px}
+.price{color:#00ffd5;margin:10px 0}
 .btn{
   width:100%;
-  padding:15px;
+  padding:14px;
   border-radius:40px;
-  background:#25D366;
+  background:#ff005c;
+  border:none;
   color:#fff;
   font-weight:700;
-  border:none;
   cursor:pointer;
-  transition:.3s;
-}
-.btn:hover{
-  transform:scale(1.06);
-  box-shadow:0 0 15px rgba(37,211,102,.6);
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:35px;
-  opacity:.7;
-  font-size:.9rem;
-}
-
-/* ANIMACIONES */
-@keyframes zoomIn{
-  from{opacity:0;transform:scale(.6)}
-  to{opacity:1;transform:scale(1)}
-}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes cardIn{
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes fadeOut{
-  to{opacity:0;visibility:hidden;height:0}
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div class="intro">
-  <h1>DROP <span>S&D</span></h1>
+<section class="hero">
+  <h1>Bienvenidos a <span>Drop S&D</span></h1>
   <p>Streetwear premium • Gorras exclusivas</p>
-  <a href="https://open.spotify.com/search/Días%20Nublados%20Junior%20H" target="_blank">
-    🎧 Escuchar mientras compras
-  </a>
+
+  <!-- Spotify -->
+  <iframe style="border-radius:12px"
+    src="https://open.spotify.com/embed/track/3uHf9l9xV6eE1JZxD6FZyT"
+    width="300" height="80" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+  </iframe>
+
+  <div class="arrow" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">⬇️</div>
+</section>
+
+<section id="productos" class="grid">
+
+<div class="card" onclick="verProducto('Gorra Barbas Skate or Die','$600','gorra1.jpg')">
+<img src="gorra1.jpg">
+<div class="info">
+<h3>Gorra Barbas Skate or Die</h3>
+<p class="price">$600 MXN</p>
+</div>
 </div>
 
-<header>
-  DROP <span style="color:#ff005c">S&D</span>
-</header>
+<div class="card" onclick="verProducto('Gorra Barbas Skull','$600','gorra2.jpg')">
+<img src="gorra2.jpg">
+<div class="info">
+<h3>Gorra Barbas Skull</h3>
+<p class="price">$600 MXN</p>
+</div>
+</div>
 
-<section class="grid">
+<div class="card" onclick="verProducto('Gorra B-Star','$600','gorra3.jpg')">
+<img src="gorra3.jpg">
+<div class="info">
+<h3>Gorra B-Star</h3>
+<p class="price">$600 MXN</p>
+</div>
+</div>
 
-  <!-- GORRA 1 -->
-  <div class="card">
-    <img src="gorra1.jpg" alt="Gorra Barbas Skate or Die">
-    <div class="info">
-      <h2>Gorra Barbas Skate or Die</h2>
-      <p class="price">$600 MXN</p>
-      <button class="btn" onclick="comprar(
-        'Gorra Barbas Skate or Die',
-        '$600 MXN',
-        'gorra1.jpg'
-      )">Comprar por WhatsApp</button>
-    </div>
-  </div>
-
-  <!-- GORRA 2 -->
-  <div class="card">
-    <img src="gorra2.jpg" alt="Gorra Barbas Skull">
-    <div class="info">
-      <h2>Gorra Barbas Skull</h2>
-      <p class="price">$600 MXN</p>
-      <button class="btn" onclick="comprar(
-        'Gorra Barbas Skull',
-        '$600 MXN',
-        'gorra2.jpg'
-      )">Comprar por WhatsApp</button>
-    </div>
-  </div>
-
-  <!-- GORRA 3 -->
-  <div class="card">
-    <img src="gorra3.jpg" alt="Gorra Barbas Hats B-Star">
-    <div class="info">
-      <h2>Gorra Barbas Hats B-Star</h2>
-      <p class="price">$600 MXN</p>
-      <button class="btn" onclick="comprar(
-        'Gorra Barbas Hats B-Star',
-        '$600 MXN',
-        'gorra3.jpg'
-      )">Comprar por WhatsApp</button>
-    </div>
-  </div>
-
-  <!-- GORRA 4 -->
-  <div class="card">
-    <img src="gorra4.jpg" alt="Gorra Barbas Hats Scream">
-    <div class="info">
-      <h2>Gorra Barbas Hats Scream</h2>
-      <p class="price">$650 MXN</p>
-      <button class="btn" onclick="comprar(
-        'Gorra Barbas Hats Scream',
-        '$650 MXN',
-        'gorra4.jpg'
-      )">Comprar por WhatsApp</button>
-    </div>
-  </div>
+  <div class="card" onclick="verProducto('Gorra Scream','$600','gorra4.jpg')">
+<img src="gorra4.jpg">
+<div class="info">
+<h3>Gorra Scream</h3>
+<p class="price">$600 MXN</p>
+</div>
+</div>
 
 </section>
 
-<footer>
-📲 Pedidos por WhatsApp: 5575359774<br>
-📸 Instagram: @drop.sayuydan
-</footer>
-
 <script>
-function comprar(nombre, precio, imagen){
-  const telefono = "525575359774";
-  const mensaje = `Hola 👋
-Quiero comprar esta gorra:
-
-🧢 ${nombre}
-💲 Precio: ${precio}
-📸 Imagen: ${imagen}
-
-Quedo atento, gracias.`;
-
-  window.open(
-    "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje),
-    "_blank"
-  );
+function verProducto(nombre, precio, img){
+  localStorage.setItem("producto", JSON.stringify({nombre, precio, img}));
+  window.location.href="producto.html";
 }
 </script>
 
