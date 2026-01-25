@@ -2,28 +2,64 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
-<title>Drop S&D | Gorras Barbas Streetwear Premium</title>
-<meta name="description" content="Compra gorras Barbas premium en Drop S&D. Streetwear original, diseño exclusivo y pedidos directos por WhatsApp. Envíos en México.">
-<meta name="keywords" content="gorras barbas, drop s&d, gorras streetwear, gorras premium, gorras mexico">
-<meta name="author" content="Drop S&D">
-<meta name="robots" content="index, follow">
+<title>Drop S&D | Streetwear Premium</title>
 
-<!-- OPEN GRAPH -->
-<meta property="og:title" content="Drop S&D | Gorras Barbas Premium">
-<meta property="og:description" content="Gorras Barbas streetwear premium. Compra directa por WhatsApp.">
-<meta property="og:image" content="gorra1.jpg">
-<meta property="og:type" content="website">
-
-<!-- FUENTE -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
-body{background:#000;color:#fff}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif
+}
+
+body{
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* INTRO */
+.intro{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  animation:fadeOut 1s ease 4s forwards;
+}
+
+.intro h1{
+  font-size:3.2rem;
+  font-weight:900;
+  letter-spacing:6px;
+  animation:zoomIn 1.2s ease;
+}
+
+.intro span{color:#ff005c}
+
+.intro p{
+  margin-top:10px;
+  opacity:.7;
+  animation:fadeUp 1.5s ease;
+}
+
+.intro a{
+  margin-top:30px;
+  padding:14px 38px;
+  border-radius:40px;
+  background:#1DB954;
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  animation:fadeUp 1.8s ease;
+  transition:.3s;
+}
+.intro a:hover{transform:scale(1.07)}
 
 /* HEADER */
 header{
@@ -33,126 +69,166 @@ header{
   font-weight:900;
   letter-spacing:4px;
 }
-header span{color:#ff005c}
 
-/* CARRITO */
-.cart-icon{
-  position:fixed;
-  top:20px;
-  right:20px;
-  background:#ff005c;
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:1.5rem;
-  z-index:1000;
-}
-
-.cart-count{
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  background:#000;
-  border:2px solid #fff;
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  font-size:.8rem;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-weight:700;
-}
-
-/* PRODUCTOS */
+/* GRID */
 .grid{
-  padding:25px;
+  padding:35px;
   display:grid;
-  grid-template-columns:1fr;
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:35px;
 }
 
+/* CARD */
 .card{
   background:#111;
   border-radius:25px;
   overflow:hidden;
-  animation:up 1s;
+  opacity:0;
+  transform:translateY(40px);
+  animation:cardIn 1s forwards;
 }
+
+.card:nth-child(2){animation-delay:.2s}
+.card:nth-child(3){animation-delay:.4s}
+.card:nth-child(4){animation-delay:.6s}
 
 .card img{
   width:100%;
   height:300px;
   object-fit:cover;
+  transition:.4s;
 }
 
-.info{padding:20px}
-.price{color:#00ffd5;margin:10px 0}
+.card:hover img{transform:scale(1.1)}
 
-.btn{
-  display:block;
-  padding:14px;
-  text-align:center;
-  border-radius:40px;
-  background:#ff005c;
-  color:#fff;
+.info{
+  padding:22px;
+}
+
+.info h2{
+  font-size:1.2rem;
   font-weight:700;
 }
 
-.btn:active{transform:scale(.95)}
-
-footer{
-  text-align:center;
-  padding:30px;
-  opacity:.7;
+.price{
+  color:#00ffd5;
+  margin:12px 0;
+  font-size:1.1rem;
 }
 
-@keyframes up{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1}
+/* BOTÓN */
+.btn{
+  width:100%;
+  padding:15px;
+  border-radius:40px;
+  background:#25D366;
+  color:#fff;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 15px rgba(37,211,102,.6);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:35px;
+  opacity:.7;
+  font-size:.9rem;
+}
+
+/* ANIMACIONES */
+@keyframes zoomIn{
+  from{opacity:0;transform:scale(.6)}
+  to{opacity:1;transform:scale(1)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes cardIn{
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeOut{
+  to{opacity:0;visibility:hidden;height:0}
 }
 </style>
 </head>
 
 <body>
 
-<a href="carrito.html" class="cart-icon" aria-label="Ver carrito">
-  🛒
-  <div class="cart-count" id="contador">0</div>
-</a>
+<!-- INTRO -->
+<div class="intro">
+  <h1>DROP <span>S&D</span></h1>
+  <p>Streetwear premium • Gorras exclusivas</p>
+  <a href="https://open.spotify.com/search/Días%20Nublados%20Junior%20H" target="_blank">
+    🎧 Escuchar mientras compras
+  </a>
+</div>
 
 <header>
-  DROP <span>S&D</span>
+  DROP <span style="color:#ff005c">S&D</span>
 </header>
 
 <section class="grid">
 
+  <!-- GORRA 1 -->
   <div class="card">
-    <img src="gorra1.jpg" alt="Gorra Barbas Negra Premium" loading="lazy">
+    <img src="https://tusitio.com/gorra1.jpg" alt="Gorra Barbas Hats X Rich The Kid">
     <div class="info">
-      <h2>Gorra Barbas Negra</h2>
+      <h2>Gorra Barbas Skate or Die</h2>
       <p class="price">$600 MXN</p>
-      <a class="btn" href="producto1.html">Ver gorra</a>
+      <button class="btn" onclick="comprar(
+        'Gorra Barbas Negra',
+        '$600 MXN',
+        'https://tusitio.com/gorra1.jpg'
+      )">Comprar por WhatsApp</button>
     </div>
   </div>
 
+  <!-- GORRA 2 -->
   <div class="card">
-    <img src="gorra2.jpg" alt="Gorra Barbas Skull Streetwear" loading="lazy">
+    <img src="https://tusitio.com/gorra2.jpg" alt="Gorra Barbas Skull">
     <div class="info">
       <h2>Gorra Barbas Skull</h2>
       <p class="price">$600 MXN</p>
-      <a class="btn" href="producto2.html">Ver gorra</a>
+      <button class="btn" onclick="comprar(
+        'Gorra Barbas Skull',
+        '$600 MXN',
+        'https://tusitio.com/gorra2.jpg'
+      )">Comprar por WhatsApp</button>
     </div>
   </div>
 
+  <!-- GORRA 3 -->
   <div class="card">
-    <img src="gorra3.jpg" alt="Gorra Barbas Azul Urbana" loading="lazy">
+    <img src="https://tusitio.com/gorra3.jpg" alt="Gorra Barbas Hats B-Star">
     <div class="info">
-      <h2>Gorra Barbas Azul</h2>
+      <h2>Gorra Barbas Hats B-Star</h2>
       <p class="price">$600 MXN</p>
-      <a class="btn" href="producto3.html">Ver gorra</a>
+      <button class="btn" onclick="comprar(
+        'Gorra Barbas Azul',
+        '$600 MXN',
+        'https://tusitio.com/gorra3.jpg'
+      )">Comprar por WhatsApp</button>
+    </div>
+  </div>
+
+  <!-- GORRA 4 -->
+  <div class="card">
+    <img src="https://tusitio.com/gorra4.jpg" alt="Gorra Barbas Hats Scream">
+    <div class="info">
+      <h2>Gorra Barbas Hats Scream</h2>
+      <p class="price">$600 MXN</p>
+      <button class="btn" onclick="comprar(
+        'Gorra Barbas Roja',
+        '$650 MXN',
+        'https://tusitio.com/gorra4.jpg'
+      )">Comprar por WhatsApp</button>
     </div>
   </div>
 
@@ -164,8 +240,22 @@ footer{
 </footer>
 
 <script>
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-document.getElementById("contador").textContent = carrito.length;
+function comprar(nombre, precio, imagen){
+  const telefono = "525575359774";
+  const mensaje = `Hola 👋
+Quiero comprar esta gorra:
+
+🧢 ${nombre}
+💲 Precio: ${precio}
+📸 Imagen: ${imagen}
+
+Quedo atento, gracias.`;
+
+  window.open(
+    "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje),
+    "_blank"
+  );
+}
 </script>
 
 </body>
