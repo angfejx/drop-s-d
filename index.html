@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,34 +9,48 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
-body{background:#000;color:#fff}
+:root{
+  --bg:#000;
+  --card:#111;
+  --text:#fff;
+  --accent:#ff005c;
+  --gold:#d4af37;
+}
+body.light{
+  --bg:#f4f4f4;
+  --card:#fff;
+  --text:#000;
+}
 
-/* BOTÓN CARRITO */
-.cart-btn{
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{background:var(--bg);color:var(--text);transition:.3s}
+
+/* BOTONES */
+.cart-btn, .toggle{
   position:fixed;
-  top:20px;
   right:20px;
-  background:#ff005c;
-  width:60px;
-  height:60px;
+  width:60px;height:60px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:1.6rem;
   cursor:pointer;
-  z-index:1000;
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  z-index:3000;
+}
+.cart-btn{
+  top:20px;
+  background:var(--accent);
+  font-size:1.6rem;
+}
+.toggle{
+  bottom:20px;
+  background:var(--card);
 }
 .cart-btn span{
   position:absolute;
-  top:-5px;
-  right:-5px;
+  top:-5px;right:-5px;
   background:#25D366;
-  color:#000;
-  width:22px;
-  height:22px;
+  width:22px;height:22px;
   border-radius:50%;
   font-size:.8rem;
   display:flex;
@@ -46,265 +61,249 @@ body{background:#000;color:#fff}
 
 /* HERO */
 .hero{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:30px;
 }
-.hero h1{font-size:3.6rem;font-weight:900}
-.hero span{color:#ff005c}
-.hero p{opacity:.75;margin:20px 0;max-width:520px}
+.hero h1{font-size:3rem;font-weight:900}
+.hero span{color:var(--accent)}
+.hero p{opacity:.7;margin:15px 0}
 
-.music-btn{
-  margin-top:25px;
-  padding:15px 42px;
+.spotify{
+  margin-top:20px;
+  padding:14px 36px;
   border-radius:40px;
   background:#1DB954;
   color:#fff;
-  font-weight:700;
   text-decoration:none;
-  transition:.3s;
-}
-.music-btn:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 18px rgba(29,185,84,.6);
-}
-
-.arrow{
-  margin-top:45px;
-  font-size:2.6rem;
-  animation:bounce 1.5s infinite;
-  cursor:pointer;
-}
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(12px)}
+  font-weight:700;
 }
 
 /* PRODUCTOS */
 .grid{
-  padding:60px;
+  padding:50px 25px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
 }
 .card{
-  background:#111;
-  border-radius:25px;
+  background:var(--card);
+  border-radius:22px;
   overflow:hidden;
   transition:.4s;
 }
 .card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 15px 40px rgba(0,0,0,.6);
+  transform:translateY(-10px);
 }
 .card img{
   width:100%;
-  height:300px;
+  height:260px;
   object-fit:cover;
 }
-.info{padding:22px;text-align:center}
-.price{color:#00ffd5;margin:10px 0}
-.add-btn{
-  padding:12px 28px;
-  border-radius:30px;
+.info{text-align:center;padding:20px}
+.price{color:var(--gold);margin:6px 0;font-weight:700}
+.stock{font-size:.85rem;opacity:.8;margin-bottom:10px}
+.btns{display:flex;gap:10px;justify-content:center}
+button{
+  padding:10px 20px;
   border:none;
-  background:#ff005c;
-  color:#fff;
-  font-weight:700;
+  border-radius:30px;
   cursor:pointer;
+  font-weight:700;
 }
+.add{background:var(--accent);color:#fff}
+.buy{background:#25D366;color:#000}
 
 /* CARRITO */
 .cart{
   position:fixed;
-  top:0;
-  right:-100%;
+  top:0;right:-100%;
   width:100%;
   max-width:420px;
   height:100vh;
-  background:#111;
-  padding:30px;
+  background:var(--card);
+  padding:25px;
   transition:.4s;
-  z-index:2000;
+  z-index:4000;
 }
 .cart.active{right:0}
-.cart h2{text-align:center;margin-bottom:20px}
-.close{text-align:right;cursor:pointer;font-size:1.2rem}
+.close{text-align:right;font-size:1.2rem;cursor:pointer}
+.cart h2{text-align:center;margin-bottom:10px}
 
 .cart-item{
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:12px;
-  background:#000;
-  padding:10px;
-  border-radius:15px;
-  margin-bottom:12px;
+  margin:10px 0;
+  font-size:.9rem;
 }
-.cart-item img{
-  width:60px;
-  height:60px;
-  object-fit:cover;
-  border-radius:10px;
-}
-.cart-item .info{
-  flex:1;
-  font-size:.85rem;
-}
-.remove-btn{
-  background:#ff005c;
-  border:none;
+.remove{
+  background:var(--accent);
   color:#fff;
+  width:26px;
+  height:26px;
   border-radius:50%;
-  width:28px;
-  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
-  font-weight:700;
+  font-size:.8rem;
 }
 
-.cart button{
-  width:100%;
+.total{
+  margin-top:15px;
+  font-weight:800;
+  text-align:center;
+}
+.checkout{
   margin-top:20px;
   padding:15px;
+  width:100%;
   border-radius:40px;
-  border:none;
   background:#25D366;
-  color:#000;
-  font-weight:700;
+  font-weight:800;
   cursor:pointer;
+}
+.bank{
+  margin-top:20px;
+  font-size:.85rem;
+  opacity:.8;
+  text-align:center;
+}
+input{
+  width:100%;
+  padding:12px;
+  border-radius:30px;
+  border:none;
+  margin:10px 0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BOTÓN CARRITO -->
-<div class="cart-btn" onclick="toggleCart()">
-  🛒 <span id="count">0</span>
-</div>
+<div class="cart-btn" onclick="toggleCart()">🛒 <span id="count">0</span></div>
+<div class="toggle" onclick="toggleMode()">🌙</div>
 
-<!-- HERO -->
 <section class="hero">
-  <h1>Bienvenidos a <span>Drop S&D</span></h1>
-  <p>Streetwear premium • Gorras exclusivas</p>
-
-  <a class="music-btn"
-     href="https://open.spotify.com/search/Drop%20S%26D%20Streetwear%20Vibes"
-     target="_blank">🎧 Mientras compras escucha música</a>
-
-  <div class="arrow" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">
-    ⬇️
-  </div>
+  <h1>Drop <span>S&D</span></h1>
+  <p>Streetwear premium · Gorras exclusivas</p>
+  <a class="spotify" target="_blank"
+     href="https://open.spotify.com/search/streetwear%20vibes">
+     🎧 Escucha mientras compras
+  </a>
 </section>
 
-<!-- PRODUCTOS -->
-<section id="productos" class="grid">
+<section class="grid" id="productos"></section>
 
-  <div class="card">
-    <img src="gorra1.jpg">
-    <div class="info">
-      <h3>Gorra Barbas Skate or Die</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Barbas Skate or Die','$600','gorra1.jpg')">Agregar</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="gorra2.jpg">
-    <div class="info">
-      <h3>Gorra Barbas Skull</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Barbas Skull','$600','gorra2.jpg')">Agregar</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="gorra3.jpg">
-    <div class="info">
-      <h3>Gorra B-Star</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra B-Star','$600','gorra3.jpg')">Agregar</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="gorra4.jpg">
-    <div class="info">
-      <h3>Gorra Scream</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Scream','$600','gorra4.jpg')">Agregar</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="gorra5.jpg">
-    <div class="info">
-      <h3>Gorra Chrome CT Plata</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Chrome CT Plata','$600','gorra5.jpg')">Agregar</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="gorra6.jpg">
-    <div class="info">
-      <h3>Gorra Barbas Hats X CT Racing Cap</h3>
-      <p class="price">$600 MXN</p>
-      <button class="add-btn" onclick="add('Gorra Barbas Hats X CT Racing Cap','$600','gorra6.jpg')">Agregar</button>
-    </div>
-  </div>
-
-</section>
-
-<!-- CARRITO -->
 <div class="cart" id="cart">
   <div class="close" onclick="toggleCart()">✖</div>
-  <h2>Tu carrito</h2>
+  <h2>Checkout</h2>
+
+  <input id="nombre" placeholder="Tu nombre">
+
   <div id="items"></div>
-  <button onclick="enviar()">Enviar pedido por WhatsApp</button>
+  <div class="total" id="total"></div>
+
+  <button class="checkout" onclick="enviar()">Enviar pedido por WhatsApp</button>
+
+  <div class="bank">
+    Pago por transferencia<br><br>
+    Banco Azteca<br>
+    4027 6600 2169 5392<br>
+    José Angel Olvera
+  </div>
 </div>
 
 <script>
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-update();
+let productos = JSON.parse(localStorage.getItem("productos")) || [
+ {id:1,n:"Gorra Barbas Skate or Die",p:600,i:"gorra1.jpg",s:5},
+ {id:2,n:"Gorra Barbas Skull",p:600,i:"gorra2.jpg",s:6},
+ {id:3,n:"Gorra B-Star",p:600,i:"gorra3.jpg",s:4},
+ {id:4,n:"Gorra Scream",p:600,i:"gorra4.jpg",s:3},
+ {id:5,n:"Gorra Chrome CT Plata",p:600,i:"gorra5.jpg",s:2},
+ {id:6,n:"Gorra Racing Cap",p:600,i:"gorra6.jpg",s:5}
+];
 
-function add(nombre, precio, img){
-  carrito.push({nombre, precio, img});
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  update();
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function render(){
+ const grid=document.getElementById("productos");
+ grid.innerHTML="";
+ productos.forEach(p=>{
+  grid.innerHTML+=`
+  <div class="card">
+    <img src="${p.i}">
+    <div class="info">
+      <h3>${p.n}</h3>
+      <div class="price">$${p.p} MXN</div>
+      <div class="stock">Stock: ${p.s}</div>
+      <div class="btns">
+        <button class="add" onclick="add(${p.id})">Agregar</button>
+        <button class="buy" onclick="buyNow(${p.id})">Comprar</button>
+      </div>
+    </div>
+  </div>`;
+ });
+ localStorage.setItem("productos",JSON.stringify(productos));
+}
+render();
+
+function add(id){
+ const p=productos.find(x=>x.id===id);
+ if(p.s<=0) return alert("Producto agotado");
+ carrito.push({...p});
+ p.s--;
+ save();
 }
 
 function removeItem(index){
-  carrito.splice(index, 1);
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  update();
+ const p=carrito[index];
+ const prod=productos.find(x=>x.id===p.id);
+ if(prod) prod.s++;
+ carrito.splice(index,1);
+ save();
 }
 
-function update(){
-  document.getElementById("count").innerText = carrito.length;
-  document.getElementById("items").innerHTML = carrito.map((p,i)=>`
-    <div class="cart-item">
-      <img src="${p.img}">
-      <div class="info">
-        <strong>${p.nombre}</strong><br>
-        ${p.precio}
-      </div>
-      <button class="remove-btn" onclick="removeItem(${i})">✖</button>
-    </div>
-  `).join("");
+function buyNow(id){
+ add(id);
+ toggleCart();
 }
 
-function toggleCart(){
-  document.getElementById("cart").classList.toggle("active");
+function save(){
+ localStorage.setItem("carrito",JSON.stringify(carrito));
+ render();
+ updateCart();
 }
+
+function updateCart(){
+ document.getElementById("count").innerText=carrito.length;
+ let total=0;
+ document.getElementById("items").innerHTML=carrito.map((p,i)=>{
+  total+=p.p;
+  return `
+  <div class="cart-item">
+    🧢 ${p.n} - $${p.p}
+    <div class="remove" onclick="removeItem(${i})">✖</div>
+  </div>`;
+ }).join("");
+ document.getElementById("total").innerText="Total: $"+total+" MXN";
+}
+updateCart();
 
 function enviar(){
-  let msg="Hola 👋 quiero comprar:\n\n";
-  carrito.forEach(p=>msg+=`🧢 ${p.nombre} - ${p.precio}\n`);
-  window.open("https://wa.me/525575359774?text="+encodeURIComponent(msg),"_blank");
+ const nombre=document.getElementById("nombre").value||"Cliente";
+ let msg=`Hola, soy ${nombre} 👋%0AQuiero comprar:%0A`;
+ carrito.forEach(p=>msg+=`🧢 ${p.n} - $${p.p}%0A`);
+ window.open("https://wa.me/525618281442?text="+msg,"_blank");
 }
+
+function toggleCart(){cart.classList.toggle("active")}
+function toggleMode(){document.body.classList.toggle("light")}
 </script>
 
 </body>
