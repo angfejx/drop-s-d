@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -96,9 +95,7 @@ body{background:var(--bg);color:var(--text);transition:.3s}
   overflow:hidden;
   transition:.4s;
 }
-.card:hover{
-  transform:translateY(-10px);
-}
+.card:hover{transform:translateY(-10px)}
 .card img{
   width:100%;
   height:260px;
@@ -299,7 +296,7 @@ function enviar(){
  const nombre=document.getElementById("nombre").value||"Cliente";
  let msg=`Hola, soy ${nombre} 👋%0AQuiero comprar:%0A`;
  carrito.forEach(p=>msg+=`🧢 ${p.n} - $${p.p}%0A`);
- window.open("https://wa.me/525618281442?text="+msg,"_blank");
+ window.open("https://wa.me/525575359774?text="+msg,"_blank");
 }
 
 function toggleCart(){cart.classList.toggle("active")}
